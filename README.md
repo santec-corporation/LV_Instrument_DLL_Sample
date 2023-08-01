@@ -24,8 +24,9 @@
    Diagram of the OSU connection  
    ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/ac9318a1-b632-46a8-a557-be7e13b99446)
 
-5. Operational steps  
-    Refer to the Manual
+5. Operational steps
+   
+   Refer to the Manual
 
    Chinese [Instrument_DLL_Sample_Manual-C-v1.3.0.pdf](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/files/11933711/Instrument_DLL_Sample_Manual-C-v1.3.0.pdf)
 
