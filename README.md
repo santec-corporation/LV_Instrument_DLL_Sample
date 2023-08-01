@@ -12,13 +12,22 @@
     
 3. Device connection diagram  
    Diagram of the TSL connection  
-   ![image](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/assets/132535077/e65b3709-e870-48bf-86b3-57d931ffe8dc)  
+   ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/e208b18e-d92c-4b86-b5cf-b39340666f24)
+
    Diagram of the PCU connection  
-   ![image](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/assets/132535077/08cc6823-214a-468b-8942-2edce916811b)  
+   ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/1dbc8b27-fbb0-4551-be99-76279e52ee94)
+   ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/ee0ebf80-16be-466f-af98-777807610ce1)
+
    Diagram of the MPM connection  
-   ![image](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/assets/132535077/528d10d6-334b-4ed4-9e36-05aa267f0c0a)  
+   ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/62ac051b-d7ea-4ae1-9fc1-fa72fa5456ca)
+
    Diagram of the OSU connection  
-   ![image](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/assets/132535077/048eefa1-2306-4c3a-bdce-0622cac74684)
-  
-4. Operational steps  
-    Refere to the Manual [Instrument_DLL_Sample_Manual-C-v1.3.0.pdf](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/files/11933711/Instrument_DLL_Sample_Manual-C-v1.3.0.pdf)
+   ![image](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/assets/135589579/ac9318a1-b632-46a8-a557-be7e13b99446)
+
+5. Operational steps  
+    Refere to the Manual
+
+   Chinese [Instrument_DLL_Sample_Manual-C-v1.3.0.pdf](https://github.com/santec-corporation/VS_Instrument_DLL_Sample/files/11933711/Instrument_DLL_Sample_Manual-C-v1.3.0.pdf)
+
+   English [Santec LabVIEW Instruments  programming guide_EN.pdf](https://github.com/santec-corporation/LV_Instrument_DLL_Sample/files/12223811/Santec.LabVIEW.Instruments.programming.guide_EN.pdf)
+
