@@ -99,12 +99,11 @@
         </member>
         <member name="M:Santec.Communication.BaseCommunication.BinaryRead(System.Int32,System.Byte[]@)">
              <summary>
-            字节数组读取
             バイナリデータ読み出し
              </summary>
-             <param name="length">长度</param>
-             <param name="answer">读取到内容</param>
-             <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+             <param name="length">データ数</param>
+             <param name="answer">取得データ</param>
+             <returns>ExceptionCode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.Communication.BaseCommunication.BlockBinalyRead(System.Int32,System.Byte[]@)">
             <summary>
@@ -118,9 +117,9 @@
             <summary>
             バイナリ一括読み出し
             </summary>
-            <param name="length"></param>
-            <param name="data"></param>
-            <returns></returns>
+            <param name="length">データ数</param>
+            <param name="data">取得データ</param>
+            <returns>ExceptionCode</returns>
         </member>
         <member name="M:Santec.Communication.BaseCommunication.BaseRead(System.String@)">
             <summary>
@@ -481,12 +480,11 @@
         </member>
         <member name="M:Santec.Communication.FTD2XXUSBCommunication.BaseBinaryRead(System.Byte[]@,System.Int32)">
             <summary>
-            读取字节
             バイトデータ読み出し
             </summary>
-            <param name="answer">字节组数据</param>
-            <param name="length">数据长度</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="answer">取得データ</param>
+            <param name="length">データ数</param>
+            <returns>ExceptionCode</returns>
         </member>
         <member name="M:Santec.Communication.FTD2XXUSBCommunication.BaseWrite(System.String)">
             <summary>
@@ -792,7 +790,7 @@
         <member name="M:Santec.Communication.GPIBCommunication.BinaryRead(System.Int32,System.Byte[]@)">
             <summary>
             读取字节
-            BynalyRead
+            BinalyRead
             </summary>
             <param name="byteLenght">读取长度</param>
             <param name="answer">读取到的字节数组数据</param>
@@ -1476,6 +1474,53 @@
             <param name="answer">读取到字节数组数据</param>
             <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
+        <member name="T:Santec.Product">
+            <summary>
+            製品管理
+            </summary>
+        </member>
+        <member name="T:Santec.Product.TSL_Idx">
+            <summary>
+            TSL製品インデックス
+            </summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Idx.NotConnected">
+            <summary>NotConnected</summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Idx.TSL_570">
+            <summary>TSL-570</summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Idx.TSL_770">
+            <summary>TSL-770</summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Idx.TSL_775">
+            <summary>TSL-775</summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Idx.KIND_MAX">
+            <summary>KIND_MAX</summary>
+        </member>
+        <member name="F:Santec.Product.TSL_Name">
+            <summary>
+            TSL製品名配列
+            </summary>
+        </member>
+        <member name="M:Santec.Product.TSLPrdCheck(System.String,Santec.Product.TSL_Idx)">
+            <summary>
+            TSL製品判別処理
+            </summary>
+            <param name="product_name">製品名</param>
+            <param name="index">判別する製品</param>
+            <returns>判定結果</returns>
+        </member>
+        <member name="M:Santec.Product.TSLPrdCheck(System.String,Santec.Product.TSL_Idx,Santec.Product.TSL_Idx)">
+            <summary>
+            TSL製品判別処理(2機種同時確認)
+            </summary>
+            <param name="product_name">製品名</param>
+            <param name="index1">判別する製品1</param>
+            <param name="index2">判別する製品2</param>
+            <returns>判定結果</returns>
+        </member>
         <member name="T:Santec.ExceptionCode">
             <summary>
             Error Code
@@ -1686,13 +1731,12 @@
         </member>
         <member name="M:Santec.Instruments.BaseDevice.ReadArray``1(``0@,System.Func{System.Int32,System.Int32,System.Collections.Generic.List{System.Byte},``0})">
             <summary>
-            读取数组
             Loggデータ読み出し用関数
             </summary>
-            <typeparam name="T">类型</typeparam>
-            <param name="data">数据</param>
-            <param name="converter">转换器</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <typeparam name="T">データ型</typeparam>
+            <param name="data">読み出しデータ</param>
+            <param name="converter">コンバータ</param>
+            <returns><see errcode="ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="T:Santec.Instruments.IDevice">
             <summary>
@@ -1755,6 +1799,9 @@
             <summary>
             MPM Control Class
             </summary>
+        </member>
+        <member name="F:Santec.MPM.SAMPLING_POINT_MAX">
+            <summary>MPMに設定できる最大のサンプリング数(100万ポイント)</summary>
         </member>
         <member name="T:Santec.MPM.READ_Range_Mode">
             <summary>
@@ -1869,7 +1916,12 @@
         </member>
         <member name="P:Santec.MPM.MPMInformation.ModuleFW">
             <summary>
-            Module Version
+            Module FW Version
+             </summary>
+        </member>
+        <member name="P:Santec.MPM.MPMInformation.ModuleFPGAFW">
+            <summary>
+            Module FPGA Version
              </summary>
         </member>
         <member name="P:Santec.MPM.MPMInformation.Unit">
@@ -1884,7 +1936,12 @@
         </member>
         <member name="F:Santec.MPM.Enable_216Monitor">
             <summary>
-             Using 216 Monitor Flag
+             トリガ測定機能有効フラグ
+            </summary>
+        </member>
+        <member name="P:Santec.MPM.TargetTriggercount">
+            <summary>
+            内部パラメータ　トリガ判断用必要トリガ数
             </summary>
         </member>
         <member name="P:Santec.MPM.Information">
@@ -1925,11 +1982,26 @@
             <param name="info">information</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
+        <member name="M:Santec.MPM.Get_Module_FPGAFW(System.Int32,System.String@)">
+            <summary>
+            Get module FPGA FW
+            </summary>
+            <param name="moduleNumber">module number 0~</param>
+            <param name="info">information</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+        </member>
         <member name="M:Santec.MPM.Get_Enable_Module(System.Int32[]@)">
             <summary>
             Get enable module 
             </summary>
             <param name="enableModules">enable module</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+        </member>
+        <member name="M:Santec.MPM.Get_Enable_ReferenceModule">
+            <summary>
+            Get enable reference module 
+            </summary>
+            <param></param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.MPM.Set_READ_Range_Mode(Santec.MPM.READ_Range_Mode)">
@@ -2062,26 +2134,30 @@
             <param name="stepwave">wavelength step(nm)</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
-        <member name="M:Santec.MPM.Set_Logging_Paremeter_for_STS(System.Double,System.Double,System.Double,System.Double,Santec.MPM.Measurement_Mode)">
+        <member name="M:Santec.MPM.Set_Logging_Paremeter_for_STS(System.Double,System.Double,System.Double,System.Double,System.Double,Santec.MPM.Measurement_Mode,System.String)">
             <summary>
             Set Logging parameter for STS 
             This methode assuming to use with STS
             </summary>
             <param name="startwave">start wavelength(nm)</param>
             <param name="stopwave">stop wavelength(nm)</param>
-            <param name="wavestep">wavelength step(nm)  Freerun: target step SME: acctuar step</param>
+            <param name="wavestep">wavelength step(nm) Freerun: target step SME: acctuar step</param>
+            <param name="triggerstep">trigger step(nm)</param> 
             <param name="speed">sweep speed(nm/sec)</param>
             <param name="mode">mesurment mode  without const mode</param>
+            <param name="tslProductName">TSL ProductName</param>
             <returns>Errorcode <see cref="T:Santec.ExceptionCode"/></returns>
         </member>
-        <member name="M:Santec.MPM.Set_LoggingParam_for_Freerun(System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Santec.MPM.Set_LoggingParam_for_Freerun(System.Double,System.Double,System.Double,System.Double,System.Double,System.String)">
             <summary>
             Freerunモード時　スイープパラメータの設定
             </summary>
             <param name="startwave">開始波長(nm)</param>
             <param name="stopwave">停止波長(nm)</param>
             <param name="resstep">リスケーリングステップ(nm)</param>
+            <param name="actualstep">トリガーステップ(nm)</param>
             <param name="speed">SeeepSeppd(nm/sec)</param>
+            <param name="tslProductName">TSLの製品名(低速掃引の補正用)</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
         </member>
         <member name="M:Santec.MPM.Set_LoggingParam_for_SME(System.Double,System.Double,System.Double,System.Double,System.Boolean)">
@@ -2173,19 +2249,29 @@
             <param name="data">data</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
-        <member name="M:Santec.MPM.Get_Trigger_Timming(System.Single[]@)">
+        <member name="M:Santec.MPM.Get_Trigger_Timming(System.Int32,System.Single[]@)">
             <summary>
-            MPM-216 固有機能　トリガタイミングの取得関数
+            MPM-216 固有機能 トリガタイミングの取得関数
             </summary>
+            <param name="moduleNumber">SlotNumber</param>
             <param name="data">トリガインデックスデータ</param>
             <returns></returns>
         </member>
-        <member name="M:Santec.MPM.Get_216_Monitordata(System.Single[]@,System.Single[]@)">
+        <member name="M:Santec.MPM.Get_216_Monitordata(System.Int32,System.Single[]@,System.Single[]@)">
             <summary>
             Get 216 Monitor data
             </summary>
+            <param name="moduleNumber">SlotNumber</param>
             <param name="trigger">trigger index</param>
             <param name="monitor">monitor data</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
+        </member>
+        <member name="M:Santec.MPM.Get_216_Triggerdata(System.Int32,System.Single[]@)">
+            <summary>
+            Get 216 Trigger data
+            </summary>
+            <param name="moduleNumber">SlotNumber</param>
+            <param name="trigger">trigger index</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
         </member>
         <member name="M:Santec.MPM.Zeroing">
@@ -2412,7 +2498,7 @@
              OSU　Information
             </summary>
         </member>
-        <member name="M:Santec.OSU.#ctor">
+        <member name="M:Santec.OSU.#ctor(System.Boolean)">
             <summary>
             constructor
             </summary>
@@ -2660,6 +2746,15 @@
             偏波↔bit
             </summary>
         </member>
+        <member name="F:Santec.PCU.PCU_MONI_RANGE_MAX">
+            <summary>PCUパワーモニタの最大レンジ</summary>
+        </member>
+        <member name="F:Santec.PCU.PCU_MONI_RANGE_MIN">
+            <summary>PCUパワーモニタの最小レンジ</summary>
+        </member>
+        <member name="F:Santec.PCU.PCU_RANGE_IMPROVEMENT_MAX_WL">
+            <summary>PCUのRange調整改善をこれより上の波長では適用しない（nm）</summary>
+        </member>
         <member name="P:Santec.PCU.DeviceName">
             <summary>
             Device number
@@ -2730,7 +2825,7 @@
              PCU　Information
             </summary>
         </member>
-        <member name="M:Santec.PCU.#ctor">
+        <member name="M:Santec.PCU.#ctor(System.Boolean)">
             <summary>
             constructor
             </summary>
@@ -2769,10 +2864,11 @@
             <param name="range">Range</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
-        <member name="M:Santec.PCU.Range_Adjust">
+        <member name="M:Santec.PCU.Range_Adjust(System.Double)">
             <summary>
             Range adjust
             </summary>
+            <param name="stop_wavelength">終了波長</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.GetParameter(System.String,System.Double@)">
@@ -2794,60 +2890,59 @@
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_A(System.Double[]@)">
             <summary>
-            获取校准信息A
-            パラメータA取得
+            校正係数A取得
             </summary>
-            <param name="data">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="data">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_B(System.Double[]@)">
             <summary>
-            获取校准信息B
+            校正係数B取得
             </summary>
-            <param name="data">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="data">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_C(System.Double[]@)">
             <summary>
-            获取校准信息C
+            校正係数C取得
             </summary>
-            <param name="data">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="data">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_D(System.Double[]@)">
             <summary>
-            获取校准信息D
+            校正係数D取得
             </summary>
-            <param name="data">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="data">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_G0(System.Double@)">
             <summary>
-            获取校准信息G0
+            校正係数GO取得
             </summary>
-            <param name="value">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="value">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_H(System.Double[]@)">
-            <summary>
-            获取校准信息H
-            </summary>
-            <param name="data">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+             <summary>
+            校正係数H取得
+             </summary>
+             <param name="data">校正係数</param>
+             <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_Temp(System.Double@)">
             <summary>
-            获取校准信息T0
+            温度の校正係数取得
             </summary>
-            <param name="value">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="value">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Correction_Factor_Wavelength(System.Double@)">
             <summary>
-            获取校准信息WC
+            波長の校正係数取得
             </summary>
-            <param name="value">校准信息</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <param name="value">校正係数</param>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Set_SOP_Stauts(Santec.PCU.SOP_Stauts)">
             <summary>
@@ -2858,13 +2953,12 @@
         </member>
         <member name="M:Santec.PCU.Cal_SOP_Parameter(System.Double,Santec.PCU.SOP_Stauts,System.Double,System.Single[]@)">
             <summary>
-            计算校准参数
             補正値計算
             </summary>
-            <param name="wavelength">波长</param>
-            <param name="status">偏振态</param>
+            <param name="wavelength">波長</param>
+            <param name="status">偏波</param>
             <param name="t">温度係数</param>
-            <param name="result">校准数据</param>
+            <param name="result">校正係数</param>
             <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Cal_All_SOP_Parametar(System.Double[],System.Single[0:,0:,0:]@)">
@@ -2891,7 +2985,7 @@
             Get Radian
             </summary>
             <param name="deg">Deg</param>
-            <returns>异常代码<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+            <returns>エラーコード<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="M:Santec.PCU.Get_Inner_temp(System.Double@)">
             <summary>
@@ -2909,21 +3003,21 @@
         </member>
         <member name="M:Santec.PCU.Get_IPAddress(System.String@)">
             <summary>
-             get IP PCU IP Address
+            get IP PCU IP Address
             </summary>
             <param name="address">IP Address</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
         </member>
         <member name="M:Santec.PCU.Get_LAN_Portnumber(System.Int32@)">
             <summary>
-             Get Lan communication port number
+            Get Lan communication port number
             </summary>
             <param name="port">lan port</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
         </member>
         <member name="M:Santec.PCU.Get_Power(System.Single@)">
             <summary>
-            　get power(dBm)
+            get power(dBm)
             </summary>
             <param name="power">power</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
@@ -2941,6 +3035,13 @@
             </summary>
             <param name="input_flag">input_flag</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
+        </member>
+        <member name="M:Santec.PCU.Get_Adc(System.Int32@)">
+            <summary>
+            ADC値 取得
+            </summary>
+            <param name="adc_Data">ADC値</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
         <member name="T:Santec.SPU">
             <summary>
@@ -3166,7 +3267,7 @@
         </member>
         <member name="T:Santec.TSL.Coh_Status">
             <summary>
-            Enumerator of Coh control 
+            Enumerator of Coh control
             </summary>
         </member>
         <member name="F:Santec.TSL.Coh_Status.Coh_OFF">
@@ -3344,6 +3445,31 @@
             Enumerator of sweep status
             </summary>
         </member>
+        <member name="F:Santec.TSL.Sweep_Status.Standby">
+            <summary>
+             Stop
+            </summary>
+        </member>
+        <member name="F:Santec.TSL.Sweep_Status.Running">
+            <summary>
+             Runnning
+            </summary>
+        </member>
+        <member name="F:Santec.TSL.Sweep_Status.Pausing">
+            <summary>
+             Pause
+            </summary>
+        </member>
+        <member name="F:Santec.TSL.Sweep_Status.WaitingforTrigger">
+            <summary>
+             Standing by trigger
+            </summary>
+        </member>
+        <member name="F:Santec.TSL.Sweep_Status.Returning">
+            <summary>
+             Preparation for sweep start
+            </summary>
+        </member>
         <member name="T:Santec.TSL.TriggerOut_Source">
             <summary>
             Enumerator of trigger Output source
@@ -3358,6 +3484,11 @@
         <member name="F:Santec.TSL.TriggerOut_Source.Time">
             <summary>
             Time const mode
+            </summary>
+        </member>
+        <member name="T:Santec.TSL.memory_size">
+            <summary>
+            メモリ読み出し/書き込み用列挙体
             </summary>
         </member>
         <member name="T:Santec.TSL.TSLInformation">
@@ -3993,6 +4124,25 @@
             <param name="data">logg data</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
         </member>
+        <member name="M:Santec.TSL.Get_Logging_Data_Power_for_STS(System.Double,System.Double,System.Int32@,System.Single[]@)">
+            <summary>
+            Get powermonitor logging data for STS
+            </summary>
+            <param name="speed">sweep speed</param>
+            <param name="wavestep">wavelength step</param>
+            <param name="datapoint">number of data points</param>
+            <param name="data">logg data</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode">ExceptionCode</see></returns>
+        </member>
+        <member name="M:Santec.TSL.MovingAveraging(System.Single[],System.Single[]@,System.Int32)">
+            <summary>
+            移動平均処理　窓移動
+            </summary>
+            <param name="source">original data array</param>
+            <param name="newArray">moving averag data</param>
+            <param name="count">moving averag count</param>
+            <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
+        </member>
         <member name="M:Santec.TSL.Change_Comm_Mode(System.Boolean)">
             <summary>
             Chang Command mode
@@ -4006,11 +4156,6 @@
             </summary>
             <param name="f_550scpi">コマンド体系</param>
             <returns>Errorcode<see cref="T:Santec.ExceptionCode"/></returns>
-        </member>
-        <member name="T:Santec.TSL.memory_size">
-            <summary>
-            メモリ読み出し/書き込み用列挙体
-            </summary>
         </member>
         <member name="M:Santec.TSL.Memory_Read(Santec.TSL.memory_size,System.String,System.String@)">
             <summary>
@@ -4075,13 +4220,13 @@
         </member>
         <member name="M:Santec.TSL.Set_InputTrigger_HiActive">
             <summary>
-              570 770用関数　トリガの入力論理をHiActriveに設定
+              570/770/775用関数　トリガの入力論理をHiActriveに設定
             </summary>
             <returns></returns>
         </member>
         <member name="M:Santec.TSL.Set_OutputTrigger_HiActive">
             <summary>
-            570 770用関数　トリガ出力論理をHiActiveに設定
+            570/770/775用関数　トリガ出力論理をHiActiveに設定
             </summary>
             <returns></returns>
         </member>
